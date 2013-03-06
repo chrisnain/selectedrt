@@ -1,4 +1,6 @@
 Selectedrt::Application.routes.draw do
+  get "twitter/show"
+
   resources :schedules
 
   get "schedule/show"
