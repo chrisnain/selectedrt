@@ -1,4 +1,6 @@
 Selectedrt::Application.routes.draw do
+  resources :retweets
+
   get "twitter/show"
 
   resources :schedules
