@@ -8,7 +8,7 @@
         <%= "#{status.from_user}: #{status.text} (#{status.id})" %><br />
         <%# Twitter.retweet(status.id) %>
         <% retweet = Retweet.new(:tweetid => status.id) %>
-        <%# retweet.save %>
+        <% retweet.save %>
       <% end %>
     <% end %>
   <% end %>
