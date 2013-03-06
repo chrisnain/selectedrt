@@ -1,4 +1,6 @@
 Selectedrt::Application.routes.draw do
+  resources :schedules
+
   get "schedule/show"
 
   get "schedule/schedule"
