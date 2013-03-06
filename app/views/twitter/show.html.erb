@@ -7,7 +7,7 @@
       <% if url.expanded_url.include? account.url %>
         <%= "#{status.from_user}: #{status.text} (#{status.id})" %><br />
         <%# Twitter.retweet(status.id) %>
-        <% retweet = Retweet.new(:id => status.id, :done => true) %>
+        <% retweet = Retweet.new(:tweetid => status.id) %>
         <% retweet.save %>
       <% end %>
     <% end %>
