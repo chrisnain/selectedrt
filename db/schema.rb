@@ -20,8 +20,6 @@ ActiveRecord::Schema.define(:version => 20130306200339) do
     t.datetime "updated_at", :null => false
   end
 
-  add_index "accounts", ["name"], :name => "unique_name", :unique => true
-
   create_table "retweets", :force => true do |t|
     t.integer  "tweetid"
     t.datetime "created_at", :null => false
