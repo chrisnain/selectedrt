@@ -2,11 +2,13 @@
 <p>Shows the last tweets of the observed twitter accounts.</p>
 
 <% @accounts.each do |account| %>
-  <% Twitter.search("from:" + account.name, :count => 20, :result_type => "recent").results.map do |status| %>
+  <% Twitter.search("from:" + account.name, :count => 5, :result_type => "recent").results.map do |status| %>
     <% status.urls.each do |url| %>
       <% if url.expanded_url.include? account.url %>
         <%= "#{status.from_user}: #{status.text} (#{status.id})" %><br />
         <%# Twitter.retweet(status.id) %>
+        <% retweet = Retweet.new(:id => status.id, :done => true) %>
+        <% retweet.save %>
       <% end %>
     <% end %>
   <% end %>

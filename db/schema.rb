@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130306191703) do
+ActiveRecord::Schema.define(:version => 20130306193606) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -22,7 +22,8 @@ ActiveRecord::Schema.define(:version => 20130306191703) do
 
   add_index "accounts", ["name"], :name => "unique_name", :unique => true
 
-  create_table "retweets", :force => true do |t|
+  create_table "retweets", :id => false, :force => true do |t|
+    t.string   "id"
     t.boolean  "done"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
