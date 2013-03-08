@@ -1,11 +1,16 @@
-<h1>Twitter#show</h1>
+<h1>Twitter view</h1>
+<h2>All tweets of the observed accounts:</h2>
+
 <p>Shows the last tweets of the observed twitter accounts.</p>
 
 <% @accounts.each do |account| %>
-  <% Twitter.search("from:" + account.name, :count => 6, :result_type => "recent").results.map do |status| %>
+  <% Twitter.search("from:" + account.name, :count => 5, :result_type => "recent").results.map do |status| %>
     <% status.urls.each do |url| %>
       <% if url.expanded_url.include? account.url %>
-        <%= "#{status.from_user}: #{status.text} (#{status.id})" %><br />
+        <div id="tweet"><p><b>
+		<%= "#{status.from_user}:" %></b>
+		<%= "#{status.text} (#{status.id})" %>
+		</p></div>
         <%# Twitter.retweet(status.id) %>
         <% retweet = Retweet.new(:tweetid => status.id) %>
         <% retweet.save %>
