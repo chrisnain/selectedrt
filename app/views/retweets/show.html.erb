@@ -1,10 +1,14 @@
 <p id="notice"><%= notice %></p>
 
+<% tweet = Twitter.status(@retweet.tweetid) %>
+
 <p>
   <b>Tweetid:</b>
-  <%= @retweet.tweetid %>
+  <%= tweet.id %>
+</p>
+<p>
+  <b><%= tweet.from_user %>:</b>
+  <%= tweet.text %>
 </p>
 
-
-<%= link_to 'Edit', edit_retweet_path(@retweet) %> |
 <%= link_to 'Back', retweets_path %>
