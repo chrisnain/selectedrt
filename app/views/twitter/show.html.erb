@@ -1,34 +1,26 @@
 <h1>Twitter view</h1>
 <h2>All tweets of the observed accounts:</h2>
 
-<p>Shows the last tweets of the observed twitter accounts.</p>
+<p>Shows the last tweets of the observed twitter accounts.</p><br />
 
-<% @accounts.each do |account| %>
-  <% Twitter.search("from:" + account.name, :count => 5, :result_type => "recent").results.map do |status| %>
-    <% status.urls.each do |url| %>
-      <% if url.expanded_url.include? account.url %>
-      
-        <div id="tweet"><p><b>
-		<%= "#{status.from_user}:" %></b>
-		<%= "#{status.text} (#{status.id})" %>
-		
-        
-        <% saved = save_distinct(status.id.to_s) %>
-        <% if saved %>
-        	<div id="tweetimage">
-        		<img src=<%= asset_path "check.jpg" %> alt="retweeted">
-    		</div>
-        	<% Twitter.retweet(status.id) %>
-        <% else %>
-        	<div id="tweetimage">
-        		<img src=<%= asset_path "cross.jpg" %> alt="already retweeted" id="tweetimage">
-    		</div>
-        <% end %>
-        
-        </p></div>
-      <% end %>
+<% get_tweetids.each do |status| %>
+    <div id="tweet"><p><b>
+	<%= "#{status.from_user}:" %></b>
+	<%= "#{status.text} (#{status.id})" %>
+	
+    <% saved = save_distinct(status.id.to_s) %>
+    <% if saved %>
+    	<div id="tweetimage">
+    		<img src=<%= asset_path "check.jpg" %> alt="retweeted">
+		</div>
+    	<% Twitter.retweet(status.id) %>
+    <% else %>
+    	<div id="tweetimage">
+    		<img src=<%= asset_path "cross.jpg" %> alt="already retweeted" id="tweetimage">
+		</div>
     <% end %>
-  <% end %>
+    
+    </p></div>
 <% end %>
 
 <br /><br />

@@ -14,21 +14,19 @@ A demo version of selectedRT is located under http://selectedrt.herokuapp.com.
 SelectedRT comes with a index side that looks similar to the standard Ruby on
 Rails opening side but it contains all features.
 
-1. Under this link you can add twitter accounds that shoult be monitored. You
-also have to add the official websides there.
+1. Under this link you can add twitter accounds that shoult be monitored. You also have to add the official websides there.
 
-2. It is planed to set a timer right here to automaticly look for tweets to
-retweet.
+2. It is planed to set a timer right here to automaticly look for tweets to retweet.
 
 3. Here you will find the list of tweets that already have beer retweeted.
 
 4. This is the Link to start the retweet process. 
 
-http://twitter.com/PirateDev
+Under http://twitter.com/PirateDev you can see the retweets of selectedRT.
 
-== Planed features
+== Planned features
 
-What is planed?
+What is planned?
 
 * automate the retweets
 * retweet every tweet by an accout by leaving the website field empty.
