@@ -20,7 +20,7 @@ also have to add the official websides there.
 2. It is planed to set a timer right here to automaticly look for tweets to
 retweet.
 
-3. Here you will find the list of tweets that allready have beer retweeted.
+3. Here you will find the list of tweets that already have beer retweeted.
 
 4. This is the Link to start the retweet process. 
 

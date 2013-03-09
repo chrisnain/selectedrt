@@ -11,12 +11,21 @@
         <div id="tweet"><p><b>
 		<%= "#{status.from_user}:" %></b>
 		<%= "#{status.text} (#{status.id})" %>
-		</p></div>
+		
         
         <% saved = save_distinct(status.id.to_s) %>
         <% if saved %>
+        	<div id="tweetimage">
+        		<img src=<%= asset_path "check.jpg" %> alt="retweeted">
+    		</div>
         	<% Twitter.retweet(status.id) %>
+        <% else %>
+        	<div id="tweetimage">
+        		<img src=<%= asset_path "cross.jpg" %> alt="already retweeted" id="tweetimage">
+    		</div>
         <% end %>
+        
+        </p></div>
       <% end %>
     <% end %>
   <% end %>

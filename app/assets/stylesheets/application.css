@@ -34,14 +34,23 @@ a:hover {
 	text-decoration: none;
 }
 
-#tablestyle tr:hover {
-	background-color:#EAF2D3;
+#tweetimage img{
+	position:relative; left: -29px; bottom: 28px;
+	overflow:visible;
 }
 
 #tweet p:hover {
 	background-color:#EAF2D3;
 }
+#tweet p {
+	height:10px;
+	overflow:visible;
+}
 
+
+#tablestyle tr:hover {
+	background-color:#EAF2D3;
+}
 #tablestyle
 {
 	border: 2px solid #aaa;
