@@ -5,14 +5,6 @@ Selectedrt::Application.routes.draw do
 
   resources :schedules
 
-  get "schedule/show"
-
-  get "schedule/schedule"
-
-  get "scheduler/schedule"
-
-  get "ruby_schedule/schedule"
-
   resources :accounts
 
   # The priority is based upon order of creation:

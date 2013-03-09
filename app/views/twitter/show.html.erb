@@ -7,13 +7,16 @@
   <% Twitter.search("from:" + account.name, :count => 5, :result_type => "recent").results.map do |status| %>
     <% status.urls.each do |url| %>
       <% if url.expanded_url.include? account.url %>
+      
         <div id="tweet"><p><b>
 		<%= "#{status.from_user}:" %></b>
 		<%= "#{status.text} (#{status.id})" %>
 		</p></div>
-        <%# Twitter.retweet(status.id) %>
-        <% retweet = Retweet.new(:tweetid => status.id) %>
-        <% retweet.save %>
+        
+        <% saved = save_distinct(status.id.to_s) %>
+        <% if saved %>
+        	<% Twitter.retweet(status.id) %>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
