@@ -24,3 +24,11 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+
+set :output, {:error => '/log/error_schedule.log', :standard => '/log/schedule.log'}
+
+every 1.minutes do
+  runner "Retweet.do_retweet"
+  puts "tweeted"
+  runner "Schedule.new(:amount => 3, :unit => 'Hours')"
+end

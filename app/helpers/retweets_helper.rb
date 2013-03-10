@@ -48,4 +48,13 @@ module RetweetsHelper
     end
     return tweetstatus  
   end
+  
+  def do_retweet
+    get_tweetids.each do |status|
+      saved = save_distinct(status.id.to_s)
+      if saved
+        Twitter.retweet(status.id)
+      end
+    end
+  end
 end
