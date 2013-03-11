@@ -10,5 +10,8 @@ desc "Runs cron maintenance tasks."
 task :cron do
   puts "Running cron at #{Time.now.strftime('%Y/%m/%d %H:%M:%S')}..."
   # TODO: your cron code goes here
-  0,10,20,30,40,50 * * * * /usr/local/bin/ruby /local/selectedrt/script/cron_retweet.rb
+  every 1.minutes do
+    Schedule.new(:amount => 3, :unit => 'Hours')
+  end
+  #0,10,20,30,40,50 * * * * /usr/local/bin/ruby /local/selectedrt/script/cron_retweet.rb
 end
