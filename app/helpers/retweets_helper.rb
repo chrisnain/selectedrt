@@ -46,7 +46,7 @@ module RetweetsHelper
         end
       end
     end
-    return tweetstatus  
+    return tweetstatus
   end
   
   def do_retweet

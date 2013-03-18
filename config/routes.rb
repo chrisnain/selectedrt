@@ -3,8 +3,6 @@ Selectedrt::Application.routes.draw do
 
   get "twitter/show"
 
-  resources :schedules
-
   resources :accounts
 
   # The priority is based upon order of creation:
