@@ -1,0 +1,2 @@
+class CouldNotRetweetError < StandardError
+end

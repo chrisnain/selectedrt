@@ -24,6 +24,7 @@ module RetweetsHelper
     end
   end
   
+  
   ###
   # method that grabs all relevant tweets
   ###
@@ -49,11 +50,16 @@ module RetweetsHelper
     return tweetstatus
   end
   
+  
   def do_retweet
     get_tweetids.each do |status|
       saved = save_distinct(status.id.to_s)
       if saved
-        Twitter.retweet(status.id)
+        begin
+          Twitter.retweet(status.id)
+        rescue CoundNotRetweetError => e
+          flash.now.alert = e.message
+        end
       end
     end
   end
