@@ -1,11 +1,11 @@
-== Welcome to selectetRT
+== Welcome to selectedRT
 
-SelecteRT is a Twitterbot using Ruby on Rails.
+SelectedRT is a Twitterbot using Ruby on Rails.
 It's only function is to retweet twitter accounts.
 It works only if a tweet of a monitored contains a url to a website that
 is an official of the twitter account. 
 
-SelecteRT has a rudimental webinterface to handle the monitored accounts to
+SelectedRT has a rudimental webinterface to handle the monitored accounts to
 retweet. 
 
 == Demo version usage
