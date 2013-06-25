@@ -24,6 +24,7 @@ module RetweetsHelper
     end
   end
   
+  
   ###
   # method that grabs all relevant tweets
   ###
@@ -32,28 +33,41 @@ module RetweetsHelper
     tweetstatus = Array.new
     
     @accounts.each do |account|
-      # get tweets of definded accounts of the last day
-      result = Twitter.search("from:" + account.name + ", since:" + d, :result_type => "recent")
-      result.results.map do |status|
-        # tweet is no answer on anyone
-        if status.in_reply_to_tweet_id == nil
-          #tweet has correct url
-          status.urls.each do |url|
-            if url.expanded_url.include? account.url
-              tweetstatus << status
-            end
-          end  
+      begin
+        # get tweets of definded accounts of the last day
+        result = Twitter.search("from:" + account.name + ", since:" + d, :result_type => "recent")
+      rescue Twitter::Error::ClientError => e
+        flash.now.alert = e.message
+      end
+      
+      if result != nil
+        result.results.map do |status|
+          # tweet is no answer on anyone
+          if status.in_reply_to_tweet_id == nil
+            #tweet has correct url
+            status.urls.each do |url|
+              if url.expanded_url.include? account.url
+                tweetstatus << status
+              end
+            end  
+          end
         end
       end
     end
+
     return tweetstatus
   end
+  
   
   def do_retweet
     get_tweetids.each do |status|
       saved = save_distinct(status.id.to_s)
       if saved
-        Twitter.retweet(status.id)
+        begin
+          Twitter.retweet(status.id)
+        rescue CoundNotRetweetError => e
+          flash.now.alert = e.message
+        end
       end
     end
   end
